@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DHARA Dashboard</title>
+
+<link rel="stylesheet" href="css/dashboard.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==">
+
+<script src="js/dashboard.js" defer></script>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<aside class="sidebar">
+
+    <div class="logo">
+        🌿 DHARA
+    </div>
+
+    <ul>
+
+        <li><button class="active" onclick="scrollToSection('dashboardTop')">
+            <i class="fa-solid fa-house"></i>
+            <span data-i18n="dashboard">Dashboard</span>
+        </button></li>
+
+        <li><button onclick="scrollToSection('weatherSection')">
+            <i class="fa-solid fa-cloud-sun"></i>
+            <span data-i18n="weather">Weather</span>
+        </button></li>
+
+        <li><button onclick="scrollToSection('cropSection')">
+            <i class="fa-solid fa-seedling"></i>
+            <span data-i18n="cropRecommendation">Crop Recommendation</span>
+        </button></li>
+
+        <li><button onclick="scrollToSection('soilSection')">
+            <i class="fa-solid fa-flask"></i>
+            <span data-i18n="soilHealth">Soil Health</span>
+        </button></li>
+
+        <li><button onclick="scrollToSection('fertilizerSection')">
+            <i class="fa-solid fa-leaf"></i>
+            <span data-i18n="fertilizerCalculator">Fertilizer Calculator</span>
+        </button></li>
+
+        <li><button onclick="scrollToSection('schemesSection')">
+            <i class="fa-solid fa-building-columns"></i>
+            <span data-i18n="govtSchemes">Govt Schemes</span>
+        </button></li>
+
+        <li><button onclick="scrollToSection('diseaseSection')">
+            <i class="fa-solid fa-bug"></i>
+            <span data-i18n="diseaseDetection">Disease Detection</span>
+        </button></li>
+
+        <li><button onclick="scrollToSection('marketSection')">
+            <i class="fa-solid fa-chart-line"></i>
+            <span data-i18n="marketPrices">Market Prices</span>
+        </button></li>
+
+        <li><button onclick="scrollToSection('communitySection')">
+            <i class="fa-solid fa-users"></i>
+            <span data-i18n="community">Community</span>
+        </button></li>
+
+        <li><button onclick="scrollToSection('assistantSection')">
+            <i class="fa-solid fa-robot"></i>
+            <span data-i18n="aiAssistant">AI Assistant</span>
+        </button></li>
+
+        <li><button onclick="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span data-i18n="logout">Logout</span>
+        </button></li>
+
+    </ul>
+
+</aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <!-- Navbar -->
+
+        <header class="topbar">
+
+            <h2 data-i18n="welcomeBack">
+
+                Welcome Back 👋
+
+            </h2>
+
+            <div class="user">
+
+                <label for="languageSwitcher" class="language-label">Lang</label>
+                <select id="languageSwitcher" class="language-select" aria-label="Choose language">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="te">తెలుగు</option>
+                    <option value="mr">मराठी</option>
+                    <option value="bn">বাংলা</option>
+                </select>
+
+                <i class="fa-solid fa-bell"></i>
+
+                <img src="images/farmer-hero.png" alt="Farmer profile">
+
+            </div>
+
+        </header>
+
+        <!-- Cards -->
+
+        <!-- ================= LIVE OVERVIEW ================= -->
+
+<section class="cards" id="dashboardTop">
+
+    <!-- WEATHER -->
+
+    <div class="card">
+
+        <button type="button" class="card-action" onclick="scrollToSection('weatherSection')">
+    <i class="fa-solid fa-cloud-sun"></i>
+    <span data-i18n="weather">Weather</span>
+</button>
+
+        <h2 id="temp">
+
+            --°C
+
+        </h2>
+
+        <p id="weatherStatus">
+
+            🌤 Safe Farming Weather
+
+        </p>
+
+        <small>
+
+            <span data-i18n="rainProbability">Rain Probability:</span>
+            <span id="rainChance">--%</span>
+
+        </small>
+
+    </div>
+
+
+    <!-- SOIL -->
+
+    <div class="card">
+
+        <h3>
+
+            <i class="fa-solid fa-flask"></i>
+
+            <span data-i18n="soilHealth">Soil Health</span>
+
+        </h3>
+
+        <h2 id="soilScore">
+
+            --
+
+        </h2>
+
+        <p id="sensorStatus">
+
+            ⚪ No Sensor Connected
+
+        </p>
+
+        <small>
+
+            <span data-i18n="moisture">Moisture:</span>
+            <span id="soilMoisture">--%</span>
+
+        </small>
+
+    </div>
+
+
+    <!-- AI ADVICE -->
+
+    <div class="card">
+
+        <h3>
+
+            <i class="fa-solid fa-seedling"></i>
+
+            <span data-i18n="aiAdvice">AI Advice</span>
+
+        </h3>
+
+        <h2 id="topCrop">
+
+            Waiting...
+
+        </h2>
+
+        <p id="confidence">
+
+            <span data-i18n="confidence">Confidence</span> : --
+
+        </p>
+
+        <small id="altCrop">
+
+            <span data-i18n="alternative">Alternative</span> :
+            --
+
+        </small>
+
+    </div>
+
+
+    <!-- ALERTS -->
+
+    <div class="card">
+
+        <h3>
+
+            <i class="fa-solid fa-bell"></i>
+
+            <span data-i18n="farmAlerts">Farm Alerts</span>
+
+        </h3>
+
+        <h2 id="alertTitle">
+
+            No Alerts
+
+        </h2>
+
+        <p id="alertMessage">
+
+            Farm conditions look good.
+
+        </p>
+
+        <small id="alertTime">
+
+            Updated Just Now
+
+        </small>
+
+    </div>
+
+</section>
+
+        <!-- Placeholder -->
+
+        <!-- ================= WEATHER + NPK ================= -->
+
+<section class="dashboard-grid" id="weatherSection">
+
+    <!-- Live Weather -->
+
+    <div class="weather-panel">
+
+        <h2 data-i18n="liveWeather">
+            🌦 Live Weather
+        </h2>
+
+        <div class="weather-info">
+
+            <div>
+
+                <h3 id="city" data-i18n="detectingLocation">Detecting location...</h3>
+
+<p id="district"></p>
+
+<p id="state"></p>
+
+                <h1 id="temperature">
+                    --°C
+                </h1>
+
+                <p id="condition">
+                    Cloudy
+                </p>
+
+            </div>
+
+            <div class="weather-icon">
+
+                <i class="fa-solid fa-cloud-sun"></i>
+
+            </div>
+
+        </div>
+
+        <div class="weather-bottom">
+
+            <div>
+
+                <span data-i18n="humidity">Humidity</span>
+
+                <h3 id="humidity">
+                    72%
+                </h3>
+
+            </div>
+
+            <div>
+
+                <span data-i18n="wind">Wind</span>
+
+                <h3 id="wind">
+                    8 km/h
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- NPK Sensor -->
+
+    <div class="npk-panel">
+
+        <h2 data-i18n="soilSensor">
+            🌱 Soil Sensor
+        </h2>
+
+        <div class="npk-box">
+
+            <div class="circle">
+
+                <h3 id="nitrogen">
+                    --
+                </h3>
+
+                <span>N</span>
+
+            </div>
+
+            <div class="circle">
+
+                <h3 id="phosphorus">
+                    --
+                </h3>
+
+                <span>P</span>
+
+            </div>
+
+            <div class="circle">
+
+                <h3 id="potassium">
+                    --
+                </h3>
+
+                <span>K</span>
+
+            </div>
+
+        </div>
+
+        <button id="refreshSensorBtn" class="connect-btn" data-i18n="refreshReadings" type="button">
+
+            Refresh Readings
+
+        </button>
+
+    </div>
+
+</section>
+<!-- ================= FERTILIZER CALCULATOR ================= -->
+
+<section class="fertilizer-section" id="fertilizerSection">
+
+    <div class="fertilizer-card">
+
+        <h2 data-i18n="fertilizerCalculator">
+            🌿 AI Fertilizer Calculator
+        </h2>
+
+        <p data-i18n="fertilizerText">
+            Enter your soil NPK values or connect the sensor.
+        </p>
+
+        <p id="fertilizerSensorStatus" class="sensor-source">Waiting for live Arduino NPK readings.</p>
+
+        <div class="fertilizer-grid">
+
+            <div class="input-box">
+                <label for="nValue" data-i18n="nitrogenLabel">Nitrogen (N)</label>
+                <input type="number" id="nValue" placeholder="0">
+            </div>
+
+            <div class="input-box">
+                <label for="pValue" data-i18n="phosphorusLabel">Phosphorus (P)</label>
+                <input type="number" id="pValue" placeholder="0">
+            </div>
+
+            <div class="input-box">
+                <label for="kValue" data-i18n="potassiumLabel">Potassium (K)</label>
+                <input type="number" id="kValue" placeholder="0">
+            </div>
+
+            <div class="input-box">
+                <label for="area" data-i18n="areaLabel">Area (Acres)</label>
+                <input type="number" id="area" placeholder="1">
+            </div>
+
+            <div class="input-box">
+                <label for="fertilizerCrop">Crop</label>
+                <select id="fertilizerCrop">
+                    <option value="general">Select crop</option>
+                    <option value="rice">Rice</option>
+                    <option value="wheat">Wheat</option>
+                    <option value="maize">Maize</option>
+                    <option value="cotton">Cotton</option>
+                    <option value="soybean">Soybean</option>
+                    <option value="sugarcane">Sugarcane</option>
+                    <option value="tomato">Tomato</option>
+                    <option value="potato">Potato</option>
+                </select>
+            </div>
+
+        </div>
+
+        <!-- Calculate Button -->
+        <button
+            class="calculate-btn"
+            onclick="calculateFertilizer()">
+
+            <span data-i18n="calculateRecommendation">Calculate Recommendation</span>
+
+        </button>
+
+        <!-- ADD THIS HERE -->
+        <div id="fertilizerResult" class="result-card" data-i18n="waitingForCalculation">
+
+            Waiting for calculation...
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= SOIL HEALTH CARD ================= -->
+
+<section id="soilSection" class="dashboard-panel">
+
+    <h2 data-i18n="soilHealthAnalysis">🧪 Soil Health Analysis</h2>
+
+    <div class="panel-card">
+
+        <h3 id="soilHealthStatus">
+
+            Waiting for sensor...
+
+        </h3>
+
+        <p id="soilSuggestion">
+
+            Connect NPK Sensor
+
+        </p>
+
+        <div class="soil-card-form">
+            <h3>Build your Soil Health Card</h3>
+            <p>Enter your basic farm details. The NPK values below are filled from the Arduino sensor.</p>
+
+            <div class="soil-form-grid">
+                <div class="input-box">
+                    <label for="farmerName">Farmer name</label>
+                    <input type="text" id="farmerName" placeholder="Enter your name">
+                </div>
+                <div class="input-box">
+                    <label for="farmerPhone">Phone number</label>
+                    <input type="tel" id="farmerPhone" placeholder="Enter phone number">
+                </div>
+                <div class="input-box">
+                    <label for="farmerVillage">Village</label>
+                    <select id="farmerVillage" disabled>
+                        <option value="">Select district first</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label for="farmerDistrict">District</label>
+                    <select id="farmerDistrict" disabled>
+                        <option value="">Select state first</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label for="farmerState">State</label>
+                    <select id="farmerState">
+                        <option value="">Select state</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label for="farmerArea">Farm area (acres)</label>
+                    <input type="number" id="farmerArea" min="0.1" step="0.1" placeholder="e.g. 2.5">
+                </div>
+                <div class="input-box">
+                    <label for="farmerCrop">Current crop</label>
+                        <input list="cropOptions" type="text" id="farmerCrop" placeholder="Choose or enter crop">
+                        <datalist id="cropOptions">
+                            <option value="Rice">
+                            <option value="Wheat">
+                            <option value="Maize">
+                            <option value="Cotton">
+                            <option value="Soybean">
+                            <option value="Sugarcane">
+                            <option value="Tomato">
+                            <option value="Potato">
+                            <option value="Onion">
+                            <option value="Groundnut">
+                        </datalist>
+                </div>
+            </div>
+
+            <div class="soil-readings" aria-live="polite">
+                <span>Nitrogen: <strong id="soilCardNitrogen">--</strong></span>
+                <span>Phosphorus: <strong id="soilCardPhosphorus">--</strong></span>
+                <span>Potassium: <strong id="soilCardPotassium">--</strong></span>
+            </div>
+
+            <button id="generateSoilCardBtn" type="button">Build Soil Health Card</button>
+            <div id="soilHealthCard" class="soil-health-card" hidden></div>
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= GOVERNMENT SCHEMES ================= -->
+
+<section id="schemesSection" class="dashboard-panel">
+
+    <h2>🏛️ Government Schemes for Farmers</h2>
+
+    <p class="schemes-intro">
+        Tap a scheme to see full details, eligibility, and how to apply.
+    </p>
+
+    <div class="schemes-grid">
+
+        <details class="scheme-card">
+            <summary>💰 PM-KISAN <span class="scheme-tag">Income Support</span></summary>
+            <div class="scheme-body">
+                <p><b>Benefit:</b> ₹6,000 per year, paid in three ₹2,000 installments directly to your bank account.</p>
+                <p><b>Eligibility:</b> Any farmer family with cultivable land (income-tax payers and government officials excluded).</p>
+                <p><b>How to apply:</b> Register at the portal (Farmers Corner → New Farmer Registration) or your nearest CSC.</p>
+                <a href="https://pmkisan.gov.in/" target="_blank" rel="noopener" class="portal-btn">Visit Official Portal ↗</a>
+            </div>
+        </details>
+
+        <details class="scheme-card">
+            <summary>🛡️ Crop Insurance (PMFBY) <span class="scheme-tag">Insurance</span></summary>
+            <div class="scheme-body">
+                <p><b>Benefit:</b> Low-premium insurance covering crop losses from drought, flood, pests, and unseasonal rain.</p>
+                <p><b>Eligibility:</b> All farmers growing notified crops, including loanee and non-loanee farmers.</p>
+                <p><b>How to apply:</b> Report loss within 72 hours on the portal or through your bank.</p>
+                <a href="https://pmfby.gov.in/" target="_blank" rel="noopener" class="portal-btn">Visit Official Portal ↗</a>
+            </div>
+        </details>
+
+        <details class="scheme-card">
+            <summary>🧪 Soil Health Card <span class="scheme-tag">Soil Testing</span></summary>
+            <div class="scheme-body">
+                <p><b>Benefit:</b> Free soil report with nutrient status, pH, and crop-specific fertilizer advice.</p>
+                <p><b>Eligibility:</b> All farmers with cultivable land.</p>
+                <p><b>How to apply:</b> Register with Aadhaar on the portal, or submit a sample at a soil testing lab / CSC.</p>
+                <a href="https://soilhealth.dac.gov.in/" target="_blank" rel="noopener" class="portal-btn">Visit Official Portal ↗</a>
+            </div>
+        </details>
+
+        <details class="scheme-card">
+            <summary>📈 eNAM Market <span class="scheme-tag">Selling</span></summary>
+            <div class="scheme-body">
+                <p><b>Benefit:</b> National online market to sell produce directly to buyers across India for better prices.</p>
+                <p><b>Eligibility:</b> Farmers, traders, and FPOs registered with a linked APMC mandi.</p>
+                <p><b>How to apply:</b> Register your details and link your local APMC mandi on the portal.</p>
+                <a href="https://enam.gov.in/" target="_blank" rel="noopener" class="portal-btn">Visit Official Portal ↗</a>
+            </div>
+        </details>
+
+        <details class="scheme-card">
+            <summary>💳 Kisan Credit Card <span class="scheme-tag">Credit</span></summary>
+            <div class="scheme-body">
+                <p><b>Benefit:</b> Farm loans up to ₹3 lakh at low interest (around 4% with timely repayment).</p>
+                <p><b>Eligibility:</b> Farmers, tenant farmers, sharecroppers, and self-help groups.</p>
+                <p><b>How to apply:</b> Apply online through the government credit portal or your bank.</p>
+                <a href="https://www.jansamarth.in/" target="_blank" rel="noopener" class="portal-btn">Visit Official Portal ↗</a>
+            </div>
+        </details>
+
+        <details class="scheme-card">
+            <summary>👴 PM Kisan Maandhan <span class="scheme-tag">Pension</span></summary>
+            <div class="scheme-body">
+                <p><b>Benefit:</b> Pension of ₹3,000 per month after age 60 for small and marginal farmers.</p>
+                <p><b>Eligibility:</b> Small/marginal farmers aged 18–40 with up to 2 hectares of land.</p>
+                <p><b>How to apply:</b> Enrol with Aadhaar and bank details on the portal or at a CSC.</p>
+                <a href="https://maandhan.in/" target="_blank" rel="noopener" class="portal-btn">Visit Official Portal ↗</a>
+            </div>
+        </details>
+
+        <details class="scheme-card">
+            <summary>☀️ PM-KUSUM <span class="scheme-tag">Solar Energy</span></summary>
+            <div class="scheme-body">
+                <p><b>Benefit:</b> Subsidy support for solar pumps and grid-connected solar power for farmers.</p>
+                <p><b>Eligibility:</b> Individual farmers, groups, cooperatives, and panchayats using agricultural pumps.</p>
+                <p><b>How to apply:</b> Apply through the state renewable energy department or designated DISCOM channel.</p>
+                <a href="https://pmkusum.mnre.gov.in/" target="_blank" rel="noopener" class="portal-btn">Visit Official Portal ↗</a>
+            </div>
+        </details>
+
+        <details class="scheme-card">
+            <summary>🌾 National Horticulture Mission <span class="scheme-tag">Horticulture</span></summary>
+            <div class="scheme-body">
+                <p><b>Benefit:</b> Financial assistance for protected cultivation, quality planting material, and post-harvest infrastructure.</p>
+                <p><b>Eligibility:</b> Farmers, growers, and FPOs engaged in horticulture crops.</p>
+                <p><b>How to apply:</b> Reach the state horticulture department, district agriculture office, or local nodal agency.</p>
+                <a href="https://nhm.nic.in/" target="_blank" rel="noopener" class="portal-btn">Visit Official Portal ↗</a>
+            </div>
+        </details>
+
+        <details class="scheme-card">
+            <summary>🦐 Pradhan Mantri Matsya Sampada Yojana <span class="scheme-tag">Aquaculture</span></summary>
+            <div class="scheme-body">
+                <p><b>Benefit:</b> Support for fish farmers, hatcheries, cold chains, and aquaculture infrastructure.</p>
+                <p><b>Eligibility:</b> Fishers, fish farmer producer organizations, and aquaculture entrepreneurs.</p>
+                <p><b>How to apply:</b> Apply through the state fisheries department or the PMMSY portal.</p>
+                <a href="https://pmmsy.dof.gov.in/" target="_blank" rel="noopener" class="portal-btn">Visit Official Portal ↗</a>
+            </div>
+        </details>
+
+    </div>
+
+</section>
+<!-- ================= DISEASE DETECTION ================= -->
+
+<section id="diseaseSection" class="dashboard-panel">
+
+<h2 data-i18n="diseaseDetection">🍃 Disease Detection</h2>
+
+<div class="panel-card">
+
+<label for="diseaseImage" data-i18n="uploadCropImage">Upload crop image</label>
+
+<input type="file" id="diseaseImage" accept="image/jpeg,image/png,image/webp" onchange="previewDisease()">
+
+<div class="camera-actions">
+    <button id="startCameraBtn" type="button">Use Camera</button>
+    <button id="captureCameraBtn" type="button" hidden>Capture Image</button>
+</div>
+
+<video id="diseaseCamera" class="disease-camera" autoplay hidden></video>
+<canvas id="diseaseCanvas" hidden></canvas>
+
+<br><br>
+
+<img id="diseasePreview" class="disease-preview" alt="">
+
+<br>
+
+<button id="detectDiseaseBtn" onclick="detectDisease()" data-i18n="detectDisease">Detect Disease</button>
+
+<div id="diseaseResult" class="disease-result"></div>
+
+</div>
+
+</section>
+<!-- ================= MARKET PRICE ================= -->
+<section id="marketSection" class="dashboard-panel">
+
+<h2 data-i18n="todayMarketPrices">📈 Today's Market Prices</h2>
+<p id="marketLiveStatus" class="market-live-status">Checking mandi rates...</p>
+
+<div class="market-toolbar">
+    <label for="marketSearch">Search market prices</label>
+    <input id="marketSearch" type="text" placeholder="Search commodity, seed, vegetable, fruit, pulse or grain...">
+    <button id="marketSearchBtn" class="market-search-btn" type="button">Search</button>
+</div>
+
+<div id="marketData" class="market-empty-state">
+    Search for a commodity to see live market prices.
+</div>
+
+</section>
+<!-- ================= COMMUNITY ================= -->
+<section id="communitySection" class="community-section dashboard-panel">
+
+    <h2 data-i18n="community">👥 Community</h2>
+    <p class="community-intro" data-i18n="communityIntro">
+        Ask questions, share farm experience, and get practical advice from growers in your network.
+    </p>
+
+    <div class="community-layout">
+        <div class="community-compose">
+            <div class="composer-row">
+                <label for="communityTitle" data-i18n="communityPostTitle">Post title</label>
+                <input id="communityTitle" type="text" placeholder="Post title" data-i18n-placeholder="communityPostTitle">
+                <select id="communityCategory" aria-label="Community category">
+                    <option value="Crops">Crops</option>
+                    <option value="Pest Control">Pest Control</option>
+                    <option value="Equipment & Tools">Equipment & Tools</option>
+                    <option value="General Chat">General Chat</option>
+                </select>
+            </div>
+            <label for="communityMessage" data-i18n="communityPostMessage">Share your farming experience or ask a question...</label>
+            <textarea id="communityMessage" rows="4" placeholder="Share your farming experience or ask a question..." data-i18n-placeholder="communityPostMessage"></textarea>
+            <button id="communityPostBtn" class="community-post-btn" type="button" data-i18n="sharePost">Share Post</button>
+        </div>
+
+        <div class="community-feed">
+            <div class="community-filter-row">
+                <button class="filter-chip active" data-filter="All" data-i18n="communityAll">All</button>
+                <button class="filter-chip" data-filter="Crops" data-i18n="communityCrops">Crops</button>
+                <button class="filter-chip" data-filter="Pest Control" data-i18n="communityPest">Pest Control</button>
+                <button class="filter-chip" data-filter="Equipment & Tools" data-i18n="communityEquipment">Equipment & Tools</button>
+                <button class="filter-chip" data-filter="General Chat" data-i18n="communityGeneral">General Chat</button>
+            </div>
+            <div id="communityFeed" class="community-post-list"></div>
+        </div>
+    </div>
+
+</section>
+<!-- ================= AI CROP RECOMMENDATION ================= -->
+
+<section class="crop-section" id="cropSection">
+
+    <!-- LEFT SIDE -->
+
+    <div class="crop-left">
+
+        <h2 data-i18n="cropRecommendation">🌾 AI Crop Recommendation</h2>
+
+        <p data-i18n="cropRecommendationText">
+            Enter your soil nutrients and weather conditions to receive
+            the best crop recommendations for your farm.
+        </p>
+
+        <div class="crop-grid">
+
+            <div class="input-box">
+                <label for="cropN" data-i18n="nitrogenLabel">Nitrogen (N)</label>
+                <input type="number" id="cropN" placeholder="50">
+            </div>
+
+            <div class="input-box">
+                <label for="cropP" data-i18n="phosphorusLabel">Phosphorus (P)</label>
+                <input type="number" id="cropP" placeholder="40">
+            </div>
+
+            <div class="input-box">
+                <label for="cropK" data-i18n="potassiumLabel">Potassium (K)</label>
+                <input type="number" id="cropK" placeholder="40">
+            </div>
+
+            <div class="input-box">
+                <label for="cropTemp" data-i18n="temperatureLabel">Temperature (°C)</label>
+                <input type="number" id="cropTemp" placeholder="28">
+            </div>
+
+            <div class="input-box">
+                <label for="cropHumidity" data-i18n="humidityLabel">Humidity (%)</label>
+                <input type="number" id="cropHumidity" placeholder="75">
+            </div>
+
+            <div class="input-box">
+                <label for="cropRainfall" data-i18n="rainfallLabel">Rainfall (mm)</label>
+                <input type="number" id="cropRainfall" placeholder="180">
+            </div>
+
+            <div class="input-box">
+                <label for="cropPH" data-i18n="soilPHLabel">Soil pH</label>
+                <input type="number" step="0.1" id="cropPH" placeholder="6.5">
+            </div>
+
+        </div>
+
+        <button
+            class="predict-btn"
+            onclick="predictCrop()">
+
+            <span data-i18n="predictCrops">Predict Crops</span>
+
+        </button>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="crop-right">
+
+        <div class="prediction-card">
+
+            <h2 data-i18n="topCropRecommendations">🌱 Top Crop Recommendations</h2>
+
+            <p class="crop-description" data-i18n="topCropDescription">
+                DHARA analyzes soil nutrients and weather to recommend
+                the most suitable crops.
+            </p>
+
+            <div id="cropResult">
+
+                <div class="crop-item">
+
+                    <h3 data-i18n="waitingForPrediction">🌾 Waiting for Prediction</h3>
+
+                    <p>
+                        <span data-i18n="enterValuesAndClick">Enter all values and click</span>
+                        <b data-i18n="predictCrops">Predict Crops</b>.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= AI ASSISTANT ================= -->
+<section id="assistantSection" class="dashboard-panel">
+
+<h2 data-i18n="aiAssistant">🤖 DHARA AI Assistant</h2>
+
+<label for="chatInput" data-i18n="askDharaAi">Ask DHARA AI</label>
+
+<textarea
+id="chatInput"
+placeholder="Ask anything about farming..."
+ data-i18n-placeholder="chatPlaceholder"></textarea>
+
+<button id="askAiBtn" onclick="askAI()" data-i18n="askAi">
+
+Ask AI
+
+</button>
+
+<div id="chatAnswer" data-i18n="waitingAnswer">
+
+Waiting...
+
+</div>
+
+</section>

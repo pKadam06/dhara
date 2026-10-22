@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>DHARA | Register</title>
+
+    <link rel="stylesheet"
+        href="css/auth.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        rel="stylesheet" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<div class="background">
+
+    <div class="circle circle1"></div>
+
+    <div class="circle circle2"></div>
+
+    <div class="circle circle3"></div>
+
+</div>
+
+
+<div class="login-container">
+
+    <!-- LEFT SECTION -->
+
+    <div class="left-section">
+
+        <div class="logo">
+
+             DHARA
+
+        </div>
+
+        <h1>
+
+            Start Your
+
+            <br>
+
+            Smart Farming Journey
+
+        </h1>
+
+        <p>
+
+            Join thousands of farmers using Artificial Intelligence
+            to improve crop productivity,
+            save water,
+            monitor soil health,
+            and increase profits.
+
+        </p>
+
+        <div class="features">
+
+            <div class="feature">
+
+                🌦 Live Weather
+
+            </div>
+
+            <div class="feature">
+
+                🌱 AI Crop Recommendation
+
+            </div>
+
+            <div class="feature">
+
+                🤖 AI Chat Assistant
+
+            </div>
+
+            <div class="feature">
+
+                🧪 NPK Soil Analysis
+
+            </div>
+
+            <div class="feature">
+
+                💧 Smart Irrigation
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="right-section">
+
+        <div class="login-card">
+
+            <h2>
+
+                Create Account
+
+            </h2>
+
+            <p>
+
+                Fill in your details to start using DHARA.
+
+            </p>
+
+            <form id="registerForm">
+
+                <div class="input-group">
+
+                    <label for="fullName">
+
+                        Full Name
+
+                    </label>
+
+                    <input
+
+                        type="text"
+
+                        id="fullName"
+
+                        placeholder="Enter your full name"
+
+                        required>
+
+                </div>
+
+                <div class="input-group">
+    <label for="email">Email</label>
+
+    <div class="email-otp-container">
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required>
+
+        <button
+            type="button"
+            id="sendOtpBtn">
+            Send OTP
+        </button>
+    </div>
+</div>
+
+<div class="input-group">
+    <label for="otp">OTP</label>
+
+    <input
+        type="text"
+        id="otp"
+        placeholder="Enter OTP">
+</div>
+                <div class="input-group">
+
+                    <label for="phone">
+
+                        Phone Number
+
+                    </label>
+
+                    <input
+
+                        type="text"
+
+                        id="phone"
+
+                        placeholder="Enter your phone number"
+
+                        required>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label for="password">
+
+                        Password
+
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+
+                            type="password"
+
+                            id="password"
+
+                            placeholder="Create password"
+
+                            required>
+
+                        <span id="togglePassword">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label for="confirmPassword">
+
+                        Confirm Password
+
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+
+                            type="password"
+
+                            id="confirmPassword"
+
+                            placeholder="Confirm password"
+
+                            required>
+
+                        <span id="toggleConfirm">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                                <div class="input-group">
+
+                    <label for="state">
+
+                        State
+
+                    </label>
+<button
+    type="button"
+    id="locationBtn">
+    📍 Use My Current Location
+</button>
+                    <input
+
+                        type="text"
+
+                        id="state"
+
+                        placeholder="Enter your state"
+
+                        required>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label for="district">
+
+                        District
+
+                    </label>
+
+                    <input
+
+                        type="text"
+
+                        id="district"
+
+                        placeholder="Enter your district"
+
+                        required>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label for="village">
+
+                        Village
+
+                    </label>
+
+                    <input
+
+                        type="text"
+
+                        id="village"
+
+                        placeholder="Enter your village"
+
+                        required>
+
+                </div>
+
+
+                <div class="terms">
+
+                    <label>
+
+                        <input
+
+                            type="checkbox"
+
+                            id="terms"
+
+                            required>
+
+                        I agree to the Terms & Conditions
+
+                    </label>
+
+                </div>
+
+                <button
+
+                    type="submit"
+
+                    id="registerBtn"
+
+                    class="login-btn">
+
+                    Create Account
+
+                </button>
+
+                <p id="message"></p>
+
+            </form>
+
+            <p class="register-text">
+
+                Already have an account?
+
+                <a href="login.html">
+
+                    Login
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/register.js"></script>
+
+</body>
+
+</html>

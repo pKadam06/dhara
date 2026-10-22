@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DHARA | Smart Agriculture Platform</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          crossorigin="anonymous"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==">
+
+</head>
+
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <img src="images/generated-image.png"
+             alt="Dhara Logo">
+
+        <div class="logo-text">
+
+            <h2>DHARA</h2>
+
+            <span>Smart Agriculture Platform</span>
+
+        </div>
+
+    </div>
+
+    <nav>
+
+        <ul class="nav-links">
+
+            <li>
+
+                <a class="active"
+                   href="#">
+
+                    Home
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#features">
+
+                    Features
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#technology">
+
+                    Technology
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#contact">
+
+                    Contact
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <div class="nav-buttons">
+
+        <a href="login.html"
+           class="login-btn">
+
+            Login
+
+        </a>
+
+        <a href="register.html"
+           class="register-btn">
+
+            Register
+
+        </a>
+
+    </div>
+
+</header>
+
+<!-- ===================== HERO ===================== -->
+
+<section class="hero">
+
+<div class="hero-left">
+
+<div class="hero-tag">
+
+🌿 AI Powered Agriculture
+
+</div>
+
+<h1>
+
+Grow Smarter.
+
+<span>
+
+Harvest Better.
+
+</span>
+
+</h1>
+
+<p>
+
+Dhara empowers farmers with AI-driven crop recommendations,
+real-time weather forecasting,
+disease detection,
+market intelligence,
+and smart farming insights —
+all in one platform.
+
+</p>
+
+<div class="hero-features">
+
+<div>
+
+<i class="fa-solid fa-cloud-sun"></i>
+
+<span>
+
+Live Weather
+
+</span>
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-seedling"></i>
+
+<span>
+
+Crop Advisory
+
+</span>
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-leaf"></i>
+
+<span>
+
+Disease Detection
+
+</span>
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-chart-line"></i>
+
+<span>
+
+Market Prices
+
+</span>
+
+</div>
+
+</div>
+
+<div class="hero-buttons">
+
+<a href="register.html"
+
+class="primary-btn">
+
+Get Started
+
+</a>
+
+<a href="login.html"
+
+class="secondary-btn">
+
+Login
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="hero-circle">
+
+<img src="images/farmer-hero.png"
+
+alt="Farmer">
+
+</div>
+<!-- ================= WEATHER CARD ================= -->
+
+<div class="weather-card">
+
+    <div class="card-header">
+
+        <div>
+
+            <h3>Live Weather</h3>
+
+            <span id="weatherLocation">Detecting Location...</span>
+
+        </div>
+
+        <i class="fa-solid fa-cloud-sun weather-icon"></i>
+
+    </div>
+
+    <div class="weather-body">
+
+        <h1 id="temperature">
+
+            --
+
+            <sup>°C</sup>
+
+        </h1>
+
+        <p id="condition">
+
+            Loading...
+
+        </p>
+
+    </div>
+
+    <div class="weather-footer">
+
+        <div>
+
+            <small>Humidity</small>
+
+            <strong id="humidity">
+
+                --
+
+            </strong>
+
+        </div>
+
+        <div>
+
+            <small>Wind</small>
+
+            <strong id="wind">
+
+                --
+
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= CROP CARD ================= -->
+
+<div class="crop-card">
+
+    <div class="crop-top">
+
+        <div>
+
+            <h3>AI Crop Recommendation</h3>
+
+            <span>Based on Soil & Weather</span>
+
+        </div>
+
+        <i class="fa-solid fa-seedling"></i>
+
+    </div>
+
+    <div class="crop-body">
+
+        <h2 id="recommendedCrop">
+
+            Waiting...
+
+        </h2>
+
+        <p>
+
+            Connect your NPK sensor or fill soil details to receive an AI-powered recommendation.
+
+        </p>
+
+    </div>
+
+    <button
+
+        onclick="window.location.href='login.html'"
+
+        class="crop-btn">
+
+        Explore
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section id="features" class="features">
+
+<div class="section-title">
+
+<h2>
+
+Why Choose DHARA?
+
+</h2>
+
+<p>
+
+Everything a farmer needs in one intelligent platform.
+
+</p>
+
+</div>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+<i class="fa-solid fa-cloud-sun"></i>
+<h3>Real-Time Weather</h3>
+<p>
+Get live weather updates based on your exact location including temperature, humidity, wind speed and climate conditions.
+</p>
+</div>
+
+<div class="feature-card">
+<i class="fa-solid fa-seedling"></i>
+<h3>AI Crop Recommendation</h3>
+<p>
+Machine Learning recommends the most suitable crops using NPK values, soil pH, rainfall and weather.
+</p>
+</div>
+
+<div class="feature-card">
+<i class="fa-solid fa-flask"></i>
+<h3>Soil Health Analysis</h3>
+<p>
+Analyze Nitrogen, Phosphorus, Potassium and soil moisture for healthier crop production.
+</p>
+</div>
+
+<div class="feature-card">
+<i class="fa-solid fa-microchip"></i>
+<h3>IoT Sensor Integration</h3>
+<p>
+Connect smart NPK sensors and moisture sensors for real-time farm monitoring.
+</p>
+</div>
+
+<div class="feature-card">
+<i class="fa-solid fa-leaf"></i>
+<h3>Disease Detection</h3>
+<p>
+Upload crop images and let AI detect diseases with preventive treatment suggestions.
+</p>
+</div>
+
+<div class="feature-card">
+<i class="fa-solid fa-robot"></i>
+<h3>AI Farming Assistant</h3>
+<p>
+Chat with an intelligent farming assistant to get instant agricultural guidance.
+</p>
+</div>
+
+<div class="feature-card">
+<i class="fa-solid fa-chart-line"></i>
+<h3>Market Price Prediction</h3>
+<p>
+Monitor mandi prices and market trends to maximize profits from your harvest.
+</p>
+</div>
+
+<div class="feature-card">
+<i class="fa-solid fa-droplet"></i>
+<h3>Smart Irrigation</h3>
+<p>
+Reduce water wastage with AI-powered irrigation recommendations based on weather and soil.
+</p>
+</div>
+
+</div>
+
+</section>
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+<div class="section-title">
+
+<h2 style="color:white;">Why Farmers Choose DHARA</h2>
+
+<p style="color:white;opacity:.9;">
+
+Building the future of smart agriculture.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<h2>100%</h2>
+
+<p>User Satisfaction</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>98%</h2>
+
+<p>Prediction Accuracy</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>24×7</h2>
+
+<p>AI Support</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>100+</h2>
+
+<p>Crops Supported</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ================= TECHNOLOGY ================= -->
+
+<section id="technology" class="technology">
+
+<div class="section-title">
+
+<h2>Technology Behind DHARA</h2>
+
+<p>
+
+Advanced technologies powering modern precision agriculture.
+
+</p>
+
+</div>
+
+<div class="tech-grid">
+
+<div class="tech-card">
+
+<i class="fa-solid fa-brain"></i>
+
+<h3>Artificial Intelligence</h3>
+
+<p>
+
+Predicts crops, detects diseases and provides intelligent farming assistance.
+
+</p>
+
+</div>
+
+<div class="tech-card">
+
+<i class="fa-solid fa-microchip"></i>
+
+<h3>Internet of Things</h3>
+
+<p>
+
+Collects real-time NPK, moisture and environmental data from smart sensors.
+
+</p>
+
+</div>
+
+<div class="tech-card">
+
+<i class="fa-solid fa-cloud"></i>
+
+<h3>Cloud Computing</h3>
+
+<p>
+
+Stores weather, user profiles and farm analytics securely.
+
+</p>
+
+</div>
+
+<div class="tech-card">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<h3>Location Services</h3>
+
+<p>
+
+Provides region-specific recommendations using GPS and weather APIs.
+
+</p>
+
+</div>
+
+<div class="tech-card">
+
+<i class="fa-solid fa-database"></i>
+
+<h3>MongoDB Database</h3>
+
+<p>
+
+Securely stores users, crops and historical farming records.
+
+</p>
+
+</div>
+
+<div class="tech-card">
+
+<i class="fa-solid fa-code"></i>
+
+<h3>Node.js Backend</h3>
+
+<p>
+
+Fast and scalable REST APIs for authentication, AI and IoT communication.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" class="contact">
+
+<div class="contact-left">
+
+<h2>
+
+Let's Build Smarter Agriculture Together 🌱
+
+</h2>
+
+<p>
+
+Have questions or ideas?
+
+We'd love to hear from farmers, researchers and innovators.
+
+</p>
+
+<div class="contact-info">
+
+<p>
+
+<i class="fa-solid fa-envelope"></i>
+
+support@dhara.ai
+
+</p>
+
+<p>
+
+<i class="fa-solid fa-phone"></i>
+
++91 98765 43210
+
+</p>
+
+<p>
+
+<i class="fa-solid fa-location-dot"></i>
+
+Nagpur, Maharashtra
+
+</p>
+
+</div>
+
+</div>
+
+<div class="contact-right">
+
+<form>
+
+<label for="name">Your Name</label>
+<input
+id="name"
+type="text"
+placeholder="Your Name">
+
+<label for="email">Your Email</label>
+<input
+id="email"
+type="email"
+placeholder="Your Email">
+
+<label for="message">Message</label>
+<textarea
+id="message"
+rows="6"
+placeholder="Write your message"></textarea>
+
+<button type="submit">
+
+Send Message
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+<footer class="footer">
+
+<div class="footer-logo">
+
+<h2>
+
+🌿 DHARA
+
+</h2>
+
+<p>
+
+AI Powered Smart Agriculture Platform
+
+</p>
+
+</div>
+
+<div class="footer-links">
+
+<a href="#">Home</a>
+
+<a href="#features">Features</a>
+
+<a href="#technology">Technology</a>
+
+<a href="#contact">Contact</a>
+
+</div>
+
+<p>
+
+© 2026 DHARA | All Rights Reserved
+
+</p>
+
+</footer>
+<script src="js/main.js"></script>
+
+</body>
+
+</html>

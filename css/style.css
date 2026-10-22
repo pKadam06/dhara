@@ -1,0 +1,2349 @@
+/* ==========================
+GOOGLE FONT
+========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* ==========================
+ROOT VARIABLES
+========================== */
+
+:root{
+
+    --primary:#2E7D32;
+    --primary-dark:#1B5E20;
+    --secondary:#66BB6A;
+
+    --white:#ffffff;
+
+    --bg:#F6FBF4;
+
+    --light:#EEF8EC;
+
+    --text:#263238;
+
+    --gray:#6B7280;
+
+    --shadow:0 15px 40px rgba(0,0,0,.08);
+
+    --radius:24px;
+
+}
+
+
+/* ==========================
+RESET
+========================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+}
+
+
+/* ==========================
+BACKGROUND
+========================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:500px;
+
+    height:500px;
+
+    background:#D7F7D5;
+
+    border-radius:50%;
+
+    right:-180px;
+
+    top:-180px;
+
+    filter:blur(120px);
+
+    z-index:-2;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:450px;
+
+    height:450px;
+
+    background:#EAFCE8;
+
+    border-radius:50%;
+
+    left:-170px;
+
+    bottom:-170px;
+
+    filter:blur(120px);
+
+    z-index:-2;
+
+}
+
+
+/* ==========================
+COMMON SECTION
+========================== */
+
+section{
+
+    padding:90px 8%;
+
+}
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+}
+
+.section-title h2{
+
+    font-size:46px;
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+
+}
+
+.section-title p{
+
+    color:#666;
+
+    font-size:18px;
+
+}
+
+
+/* ==========================
+NAVBAR
+========================== */
+
+.navbar{
+
+    width:100%;
+
+    height:85px;
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    padding:0 8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.88);
+
+    -webkit-backdrop-filter:blur(16px);
+
+    backdrop-filter:blur(16px);
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+    z-index:999;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.logo img{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.logo-text h2{
+
+    color:var(--primary);
+
+    font-size:28px;
+
+}
+
+.logo-text span{
+
+    color:#777;
+
+    font-size:13px;
+
+}
+
+
+/* ==========================
+NAV LINKS
+========================== */
+
+.nav-links{
+
+    display:flex;
+
+    gap:35px;
+
+    list-style:none;
+
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    position:relative;
+
+}
+
+.nav-links a:hover{
+
+    color:var(--primary);
+
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--primary);
+
+    transition:.3s;
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
+
+.active{
+
+    color:var(--primary)!important;
+
+}
+
+
+/* ==========================
+BUTTONS
+========================== */
+
+.nav-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.login-btn{
+
+    padding:12px 28px;
+
+    border-radius:30px;
+
+    border:2px solid var(--primary);
+
+    color:var(--primary);
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.login-btn:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.register-btn{
+
+    padding:12px 30px;
+
+    border-radius:30px;
+
+    background:var(--primary);
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.register-btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   HERO
+========================== */
+
+.hero{
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:70px;
+
+    padding:140px 8% 80px;
+
+}
+
+.hero-left{
+
+    flex:1;
+
+}
+
+.hero-tag{
+
+    display:inline-block;
+
+    padding:12px 22px;
+
+    background:#EAF7E8;
+
+    color:var(--primary);
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    margin-bottom:25px;
+
+    box-shadow:0 5px 15px rgba(46,125,50,.08);
+
+}
+
+.hero-left h1{
+
+    font-size:72px;
+
+    line-height:1.1;
+
+    font-weight:800;
+
+    margin-bottom:25px;
+
+    color:#1D2939;
+
+}
+
+.hero-left h1 span{
+
+    color:var(--primary);
+
+}
+
+.hero-left p{
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    color:#666;
+
+    margin-bottom:40px;
+
+    max-width:620px;
+
+}
+
+
+/* ==========================
+HERO FEATURES
+========================== */
+
+.hero-features{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    margin-bottom:40px;
+
+}
+
+.hero-features div{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:white;
+
+    padding:15px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+}
+
+.hero-features i{
+
+    font-size:24px;
+
+    color:var(--primary);
+
+}
+
+
+/* ==========================
+BUTTONS
+========================== */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+.primary-btn{
+
+    padding:16px 36px;
+
+    background:var(--primary);
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.primary-btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-4px);
+
+}
+
+.secondary-btn{
+
+    padding:16px 36px;
+
+    border:2px solid var(--primary);
+
+    color:var(--primary);
+
+    text-decoration:none;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.secondary-btn:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+
+/* ==========================
+RIGHT SIDE
+========================== */
+
+.hero-right{
+
+    flex:1;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.hero-circle img{
+
+    width:520px;
+
+    max-width:100%;
+
+    animation:float 5s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-20px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+
+/* ==========================
+WEATHER CARD
+========================== */
+
+.weather-card{
+
+    position:absolute;
+
+    left:-20px;
+
+    top:40px;
+
+    width:270px;
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:25px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+}
+
+.card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.weather-icon{
+
+    font-size:32px;
+
+    color:#FDB813;
+
+}
+
+.card-header h3{
+
+    color:var(--primary);
+
+}
+
+.card-header span{
+
+    font-size:14px;
+
+    color:#777;
+
+}
+
+.weather-body{
+
+    text-align:center;
+
+}
+
+.weather-body h1{
+
+    font-size:55px;
+
+    color:var(--primary);
+
+    margin-bottom:10px;
+
+}
+
+.weather-body p{
+
+    color:#666;
+
+    font-size:18px;
+
+}
+
+.weather-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:25px;
+
+}
+
+.weather-footer div{
+
+    text-align:center;
+
+}
+
+.weather-footer small{
+
+    display:block;
+
+    color:#888;
+
+}
+
+.weather-footer strong{
+
+    color:var(--primary);
+
+    font-size:18px;
+
+}
+
+
+/* ==========================
+CROP CARD
+========================== */
+
+.crop-card{
+
+    position:absolute;
+
+    right:-20px;
+
+    bottom:30px;
+
+    width:300px;
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:25px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+}
+
+.crop-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.crop-top i{
+
+    color:var(--primary);
+
+    font-size:30px;
+
+}
+
+.crop-top h3{
+
+    color:var(--primary);
+
+}
+
+.crop-top span{
+
+    font-size:13px;
+
+    color:#777;
+
+}
+
+.crop-body h2{
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+
+}
+
+.crop-body p{
+
+    color:#666;
+
+    line-height:1.7;
+
+}
+
+.crop-btn{
+
+    width:100%;
+
+    margin-top:20px;
+
+    border:none;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:14px;
+
+    border-radius:30px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.crop-btn:hover{
+
+    background:var(--primary-dark);
+
+}
+
+
+
+/* ==========================
+   FEATURES
+========================== */
+
+
+.features{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+
+
+.feature-card{
+
+
+    background:white;
+
+    padding:35px 25px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.4s;
+
+}
+
+
+
+.feature-card:hover{
+
+
+    transform:translateY(-10px);
+
+}
+
+
+
+.feature-icon{
+
+
+    width:70px;
+
+    height:70px;
+
+    margin:auto;
+
+    background:#E8F5E9;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:32px;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+
+
+.feature-card h3{
+
+
+    margin-bottom:12px;
+
+    font-size:22px;
+
+}
+
+
+
+.feature-card p{
+
+
+    color:#666;
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   FEATURES SECTION
+========================== */
+
+.features{
+
+    background:#F8FFF8;
+
+}
+
+.feature-grid{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:60px auto 0;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.feature-card{
+
+    background:white;
+
+    padding:35px 30px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    border:1px solid rgba(46,125,50,.08);
+
+    cursor:pointer;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 25px 50px rgba(46,125,50,.18);
+
+}
+
+.feature-card i{
+
+    width:80px;
+
+    height:80px;
+
+    background:linear-gradient(135deg,#4CAF50,#2E7D32);
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:34px;
+
+    margin:auto;
+
+    margin-bottom:25px;
+
+}
+
+.feature-card h3{
+
+    font-size:24px;
+
+    color:#1B4332;
+
+    margin-bottom:15px;
+
+}
+
+.feature-card p{
+
+    color:#666;
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+
+
+/* ==========================
+   TECHNOLOGY SECTION
+========================== */
+
+.technology{
+
+    background:white;
+
+}
+
+.tech-grid{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.tech-card{
+
+    background:#F8FFF8;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    transition:.35s;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    border:1px solid rgba(46,125,50,.08);
+
+}
+
+.tech-card:hover{
+
+    transform:translateY(-12px);
+
+    background:white;
+
+    box-shadow:0 25px 45px rgba(46,125,50,.18);
+
+}
+
+.tech-card i{
+
+    width:85px;
+
+    height:85px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#43A047,#1B5E20);
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:auto;
+
+    font-size:34px;
+
+    margin-bottom:25px;
+
+}
+
+.tech-card h3{
+
+    font-size:24px;
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+
+}
+
+.tech-card p{
+
+    color:#666;
+
+    line-height:1.8;
+
+}
+
+
+/* ==========================
+   WHY DHARA / STATS
+========================== */
+
+.stats{
+
+    background:linear-gradient(135deg,#2E7D32,#43A047);
+
+    color:white;
+
+}
+
+.stats-grid{
+
+    width:90%;
+
+    max-width:1300px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:30px;
+
+}
+
+.stat-card{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    padding:40px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    transition:.35s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-10px);
+
+    background:rgba(255,255,255,.18);
+
+}
+
+.stat-card h2{
+
+    font-size:52px;
+
+    margin-bottom:10px;
+
+}
+
+.stat-card p{
+
+    font-size:18px;
+
+    opacity:.95;
+
+}
+
+/* ==========================
+   WEATHER SECTION
+========================== */
+
+
+.weather-section{
+
+
+    background:#ffffff;
+
+}
+
+
+
+.weather-container{
+
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+
+
+.weather-card{
+
+
+    width:500px;
+
+    padding:35px;
+
+    background:linear-gradient(
+        135deg,
+        #E8F5E9,
+        #ffffff
+    );
+
+    border-radius:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+.weather-top{
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+
+.weather-top h3{
+
+
+    font-size:28px;
+
+}
+
+
+
+.temperature{
+
+
+    font-size:55px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+
+
+.weather-details{
+
+
+    margin-top:30px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+
+
+.weather-box{
+
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+}
+
+
+
+.weather-box span{
+
+
+    display:block;
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+
+
+.weather-box strong{
+
+
+    font-size:22px;
+
+}
+
+
+
+/* ==========================
+   CROP ADVISORY
+========================== */
+
+
+.crop-section{
+
+
+    background:var(--light);
+
+}
+
+
+
+.crop-container{
+
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+
+
+.crop-card{
+
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+}
+
+
+
+.crop-card:hover{
+
+
+    transform:translateY(-8px);
+
+}
+
+
+
+.crop-card h3{
+
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+
+}
+
+
+
+.crop-card p{
+
+
+    color:#666;
+
+    line-height:1.7;
+
+}
+/* ==========================
+   AI CROP RECOMMENDATION
+========================== */
+
+
+.recommendation-section{
+
+    background:white;
+
+}
+
+
+
+.recommend-container{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:50px;
+
+    align-items:center;
+
+}
+
+
+
+.recommend-image img{
+
+    width:100%;
+
+    border-radius:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+.recommend-box{
+
+
+    background:#F7FFF5;
+
+    padding:40px;
+
+    border-radius:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+.recommend-box h2{
+
+
+    font-size:38px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.recommend-box h2 span{
+
+
+    color:var(--primary);
+
+}
+
+
+
+.input-group{
+
+
+    margin-bottom:20px;
+
+}
+
+
+
+.input-group label{
+
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+
+
+.input-group input,
+.input-group select{
+
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border-radius:15px;
+
+    border:1px solid #ddd;
+
+    outline:none;
+
+    font-size:15px;
+
+}
+
+
+
+.input-group input:focus,
+.input-group select:focus{
+
+
+    border-color:var(--primary);
+
+}
+
+
+
+.predict-btn{
+
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.predict-btn:hover{
+
+
+    background:var(--primary-dark);
+
+}
+
+
+
+/* ==========================
+   NPK SOIL MONITORING
+========================== */
+
+
+.npk-section{
+
+
+    background:var(--bg);
+
+}
+
+
+
+.npk-container{
+
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+
+
+.npk-card{
+
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+.npk-circle{
+
+
+    width:120px;
+
+    height:120px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:#E8F5E9;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.npk-circle h2{
+
+
+    font-size:35px;
+
+    color:var(--primary);
+
+}
+
+
+
+.npk-circle span{
+
+
+    font-size:14px;
+
+    color:#666;
+
+}
+
+
+
+.npk-card p{
+
+
+    color:#666;
+
+}
+
+
+
+/* ==========================
+   LIVE SENSOR STATUS
+========================== */
+
+
+.sensor-status{
+
+
+    margin-top:50px;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    box-shadow:var(--shadow);
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+}
+
+
+
+.sensor-item{
+
+
+    text-align:center;
+
+}
+
+
+
+.sensor-item h3{
+
+
+    color:var(--primary);
+
+    font-size:30px;
+
+}
+
+
+
+.sensor-item p{
+
+
+    color:#777;
+
+}
+
+
+
+/* ==========================
+   DISEASE DETECTION
+========================== */
+
+
+.disease-section{
+
+
+    background:#ffffff;
+
+}
+
+
+
+.disease-container{
+
+
+    display:flex;
+
+    gap:50px;
+
+    align-items:center;
+
+}
+
+
+
+.disease-card{
+
+
+    flex:1;
+
+    background:#F7FFF5;
+
+    padding:40px;
+
+    border-radius:30px;
+
+}
+
+
+
+.disease-card h2{
+
+
+    font-size:38px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.disease-card span{
+
+
+    color:var(--primary);
+
+}
+
+
+
+.upload-box{
+
+
+    margin-top:25px;
+
+    padding:35px;
+
+    border:2px dashed var(--primary);
+
+    border-radius:25px;
+
+    text-align:center;
+
+}
+
+
+
+.upload-box input{
+
+
+    margin-top:15px;
+
+}
+
+
+
+.disease-image{
+
+
+    flex:1;
+
+}
+
+
+
+.disease-image img{
+
+
+    width:100%;
+
+    border-radius:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ==========================
+   CONTACT SECTION
+========================== */
+
+.contact{
+
+    background:#F8FFF8;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:60px;
+
+    align-items:center;
+
+}
+
+.contact-left h2{
+
+    font-size:48px;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+.contact-left p{
+
+    color:#666;
+
+    line-height:1.9;
+
+    font-size:17px;
+
+    margin-bottom:30px;
+
+}
+
+.contact-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.contact-info p{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    font-size:18px;
+
+    color:#333;
+
+}
+
+.contact-info i{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#43A047,#2E7D32);
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+}
+
+.contact-right{
+
+    background:white;
+
+    padding:45px;
+
+    border-radius:25px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+}
+
+.contact-right form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+.contact-right input{
+
+    width:100%;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    border:1px solid #ddd;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.contact-right textarea{
+
+    width:100%;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    border:1px solid #ddd;
+
+    resize:none;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.contact-right input:focus,
+.contact-right textarea:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(46,125,50,.12);
+
+}
+
+.contact-right button{
+
+    border:none;
+
+    padding:18px;
+
+    background:linear-gradient(135deg,#43A047,#2E7D32);
+
+    color:white;
+
+    font-size:18px;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.contact-right button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 20px 35px rgba(46,125,50,.25);
+
+}
+
+/* ==========================
+   FARMER DASHBOARD
+========================== */
+
+
+.dashboard-section{
+
+
+    background:var(--light);
+
+}
+
+
+
+.dashboard-grid{
+
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+
+
+.dashboard-card{
+
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    box-shadow:var(--shadow);
+
+    text-align:center;
+
+}
+
+
+
+.dashboard-card h2{
+
+
+    font-size:35px;
+
+    color:var(--primary);
+
+}
+
+
+
+.dashboard-card p{
+
+
+    color:#666;
+
+}
+
+
+
+/* ==========================
+   FOOTER
+========================== */
+
+
+footer{
+
+
+    background:#173B1A;
+
+    color:white;
+
+    padding:60px 8% 30px;
+
+}
+
+
+
+.footer-container{
+
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr;
+
+    gap:50px;
+
+}
+
+
+
+.footer-logo h2{
+
+
+    font-size:35px;
+
+}
+
+
+
+.footer-logo span{
+
+
+    color:#A5D6A7;
+
+}
+
+
+
+.footer-links h3{
+
+
+    margin-bottom:20px;
+
+}
+
+
+
+.footer-links a{
+
+
+    display:block;
+
+    color:#ddd;
+
+    text-decoration:none;
+
+    margin-bottom:12px;
+
+}
+
+
+
+.footer-links a:hover{
+
+
+    color:white;
+
+}
+
+
+
+.footer-bottom{
+
+
+    text-align:center;
+
+    margin-top:40px;
+
+    padding-top:20px;
+
+    border-top:1px solid rgba(255,255,255,.2);
+
+    color:#ccc;
+
+}
+
+
+
+/* ==========================
+   RESPONSIVE DESIGN
+========================== */
+
+
+@media(max-width:1100px){
+
+
+.hero{
+
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+
+.hero h1{
+
+
+    font-size:50px;
+
+}
+
+
+.nav-links{
+
+
+    display:none;
+
+}
+
+
+.features{
+
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+.npk-container{
+
+
+    grid-template-columns:1fr;
+
+}
+
+
+.crop-container{
+
+
+    grid-template-columns:1fr;
+
+}
+
+
+.dashboard-grid{
+
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+.recommend-container{
+
+
+    grid-template-columns:1fr;
+
+}
+
+
+.disease-container{
+
+
+    flex-direction:column;
+
+}
+
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+.navbar{
+
+
+    padding:0 5%;
+
+}
+
+
+
+.logo-text h2{
+
+
+    font-size:22px;
+
+}
+
+
+
+.hero{
+
+
+    padding-top:120px;
+
+}
+
+
+
+.hero h1{
+
+
+    font-size:38px;
+
+}
+
+
+
+.hero-buttons{
+
+
+    flex-direction:column;
+
+}
+
+
+
+.features{
+
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.dashboard-grid{
+
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.footer-container{
+
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.weather-card{
+
+
+    width:100%;
+
+}
+
+
+
+.weather-details{
+
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+}

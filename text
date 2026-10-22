@@ -1,0 +1,45 @@
+Dhara/
+│
+├── index.html              # Landing Page
+├── login.html
+├── register.html
+├── dashboard.html
+│
+├── css/
+│   ├── style.css
+│   ├── login.css
+│   ├── register.css
+│   └── dashboard.css
+│
+├── js/
+│   ├── main.js
+│   ├── login.js
+│   ├── register.js
+│   ├── dashboard.js
+│   └── weather.js
+│
+├── images/
+│
+├── backend/
+│   ├── server.js
+│   ├── package.json
+│   ├── .env
+│   │
+│   ├── config/
+│   │      db.js
+│   │
+│   ├── models/
+│   │      User.js
+│   │
+│   ├── routes/
+│   │      auth.js
+│   │      weather.js
+│   │      crop.js
+│   │
+│   ├── controllers/
+│   │      authController.js
+│   │
+│   └── middleware/
+│          authMiddleware.js
+│
+└── README.md

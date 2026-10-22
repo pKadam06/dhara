@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DHARA | Login</title>
+
+    <link rel="stylesheet" href="css/auth.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<div class="background">
+
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+
+</div>
+
+
+<div class="login-container">
+
+    <!-- LEFT SECTION -->
+
+    <div class="left-section">
+
+        <div class="logo">
+
+             DHARA
+
+        </div>
+
+        <h1>
+
+            Smart Agriculture
+            <br>
+            Starts Here.
+
+        </h1>
+
+        <p>
+
+            Welcome back!
+
+            Access AI-powered crop recommendations,
+            weather forecasts,
+            disease detection,
+            irrigation monitoring,
+            and personalized farming insights.
+
+        </p>
+
+        <div class="features">
+
+            <div class="feature">
+
+                🌦️ Live Weather Updates
+
+            </div>
+
+            <div class="feature">
+
+                🌱 Soil & NPK Analysis
+
+            </div>
+
+            <div class="feature">
+
+                🤖 AI Crop Recommendation
+
+            </div>
+
+            <div class="feature">
+
+                💧 Smart Irrigation
+
+            </div>
+
+            <div class="feature">
+
+                📷 Plant Disease Detection
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SECTION -->
+
+    <div class="right-section">
+
+        <div class="login-card">
+
+            <h2>
+
+                Welcome Back 👋
+
+            </h2>
+
+            <p>
+
+                Login to continue your smart farming journey.
+
+            </p>
+
+
+            <form id="loginForm">
+
+                <div class="input-group">
+
+                    <label for="email">
+
+                        Email Address
+
+                    </label>
+
+                    <input
+
+                        type="email"
+
+                        id="email"
+
+                        placeholder="Enter your email"
+
+                        required
+
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="password">
+
+                        Password
+
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+
+                            type="password"
+
+                            id="password"
+
+                            placeholder="Enter your password"
+
+                            required
+
+                        >
+
+                        <span id="togglePassword">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="login-options">
+
+                    <label>
+
+                        <input type="checkbox">
+
+                        Remember Me
+
+                    </label>
+
+                    <a href="#">
+
+                        Forgot Password?
+
+                    </a>
+
+                </div>
+
+                <button
+
+                    type="submit"
+
+                    id="loginBtn"
+
+                    class="login-btn">
+
+                    Login
+
+                </button>
+
+                <p id="message"></p>
+
+            </form>
+
+            <div class="divider">
+
+                OR
+
+            </div>
+
+            <button type="button" id="googleLoginBtn" class="google-btn">
+
+                <i class="fa-brands fa-google"></i>
+
+                Continue with Google
+
+            </button>
+
+            <p class="register-text">
+
+                Don't have an account?
+
+                <a href="register.html">
+
+                    Create Account
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/login.js"></script>
+
+</body>
+
+</html>
