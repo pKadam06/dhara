@@ -1,6 +1,10 @@
 const express = require("express");
 const crypto = require("node:crypto");
+const dns = require("node:dns");
+const axios = require("axios");
 const router = express.Router();
+
+dns.setDefaultResultOrder("ipv4first");
 
 const RESOURCE = "9ef84268-d588-465a-a308-a864a43d0070";
 const SAMPLE_KEY = "579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b";
@@ -33,20 +37,38 @@ async function fetchRecords() {
         return { records: cachedRecords, stale: false };
     }
 
-    const params = new URLSearchParams({
-        "api-key": apiKey(),
-        format: "json",
-        limit: "40"
-    });
+    let response;
+    try {
+        response = await axios.get(`https://api.data.gov.in/resource/${RESOURCE}`, {
+            params: {
+                "api-key": apiKey(),
+                format: "json",
+                limit: "40"
+            },
+            timeout: 20000,
+            headers: {
+                Accept: "application/json",
+                "User-Agent": "DHARA/1.0"
+            },
+            validateStatus: () => true
+        });
+    } catch (error) {
+        if (cachedRecords) {
+            return { records: cachedRecords, stale: true };
+        }
+        const wrapped = new Error("Market price service failed");
+        wrapped.status = 502;
+        wrapped.code = error.code || error.cause?.code || "NETWORK";
+        throw wrapped;
+    }
 
-    const response = await fetch(`https://api.data.gov.in/resource/${RESOURCE}?${params}`);
-    const data = await response.json().catch(() => ({}));
+    const data = response.data && typeof response.data === "object" ? response.data : {};
 
     if ((response.status === 429 || data.error) && cachedRecords) {
         return { records: cachedRecords, stale: true };
     }
 
-    if (!response.ok || data.error) {
+    if (response.status >= 400 || data.error) {
         const error = new Error(
             response.status === 429
                 ? "Market data is busy right now. Try again in a few minutes."
@@ -99,7 +121,7 @@ router.get("/", async (req, res) => {
             stale: fetched.stale
         });
     } catch (error) {
-        console.error("MARKET ERROR:", error.message);
+        console.error("MARKET ERROR:", error.code || error.message);
         res.status(error.status || 500).json({
             success: false,
             message: error.status ? error.message : "Could not load market prices."
