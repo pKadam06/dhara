@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const Otp = require("../models/Otp");
 const generateOTP = require("../utils/generateOTP");
-const transporter = require("../config/mail");
+const { sendMail } = require("../config/mail");
 const { otpHash, safeEqual } = require("../utils/security");
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -40,7 +40,7 @@ exports.sendOTP = async (req, res) => {
             attempts: 0
         });
 
-        const info = await transporter.sendMail({
+        const info = await sendMail({
             from: `"DHARA" <${process.env.EMAIL_USER}>`,
             to: normalizedEmail,
             subject: "DHARA Email Verification OTP",

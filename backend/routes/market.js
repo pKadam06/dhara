@@ -1,14 +1,17 @@
 const express = require("express");
 const crypto = require("node:crypto");
 const dns = require("node:dns");
+const https = require("node:https");
 const axios = require("axios");
 const router = express.Router();
 
 dns.setDefaultResultOrder("ipv4first");
+const ipv4Agent = new https.Agent({ family: 4, keepAlive: true });
 
 const RESOURCE = "9ef84268-d588-465a-a308-a864a43d0070";
 const SAMPLE_KEY = "579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b";
-const REFRESH_MS = 60 * 1000;
+const REFRESH_MS = 5 * 60 * 1000;
+const MANDI_STATES = ["Maharashtra", "Uttar Pradesh", "Punjab", "Madhya Pradesh", "Karnataka"];
 let cachedRecords = null;
 let cachedAt = 0;
 let sourceUpdated = null;
@@ -32,59 +35,122 @@ function revisionOf(records) {
     return crypto.createHash("sha1").update(body).digest("hex").slice(0, 12);
 }
 
+function remember(records, updated) {
+    if (!records.length) return;
+    cachedRecords = mixRecords(records);
+    cachedAt = Date.now();
+    sourceUpdated = updated || null;
+}
+
+function mixRecords(records) {
+    const groups = new Map();
+    for (const item of records) {
+        const key = item.state || "Other";
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(item);
+    }
+    const mixed = [];
+    const lists = [...groups.values()];
+    let pending = true;
+    while (pending) {
+        pending = false;
+        for (const list of lists) {
+            if (list.length) {
+                mixed.push(list.shift());
+                pending = true;
+            }
+        }
+    }
+    return mixed;
+}
+
+function normalizeMandi(item) {
+    return {
+        state: item.state,
+        district: item.district,
+        market: String(item.market || "").trim(),
+        commodity: item.commodity,
+        variety: item.variety,
+        arrival_date: item.arrival_date,
+        min_price: item.min_price,
+        max_price: item.max_price,
+        modal_price: item.modal_price
+    };
+}
+
+async function fetchOfficial() {
+    const response = await axios.get(`https://api.data.gov.in/resource/${RESOURCE}`, {
+        params: {
+            "api-key": apiKey(),
+            format: "json",
+            limit: "40"
+        },
+        timeout: 8000,
+        httpsAgent: ipv4Agent,
+        headers: {
+            Accept: "application/json",
+            "User-Agent": "DHARA/1.0"
+        },
+        validateStatus: () => true
+    });
+    const data = response.data && typeof response.data === "object" ? response.data : {};
+    if (response.status >= 400 || data.error || !Array.isArray(data.records) || !data.records.length) {
+        const error = new Error(response.status === 429 ? "busy" : "official-unavailable");
+        error.status = response.status;
+        throw error;
+    }
+    return { records: data.records, updated: data.updated_date || null };
+}
+
+async function fetchMandi() {
+    const batches = await Promise.all(MANDI_STATES.map(async (state) => {
+        const response = await axios.get("https://mandi-api.onrender.com/v1/prices", {
+            params: { state },
+            timeout: 30000,
+            headers: { Accept: "application/json", "User-Agent": "DHARA/1.0" },
+            validateStatus: () => true
+        });
+        const rows = response.data?.data;
+        if (response.status >= 400 || !Array.isArray(rows)) return [];
+        return rows.map(normalizeMandi);
+    }));
+    const records = batches.flat();
+    return { records, updated: records.find((item) => item.arrival_date)?.arrival_date || null };
+}
+
 async function fetchRecords() {
     if (cachedRecords && Date.now() - cachedAt < REFRESH_MS) {
         return { records: cachedRecords, stale: false };
     }
 
-    let response;
     try {
-        response = await axios.get(`https://api.data.gov.in/resource/${RESOURCE}`, {
-            params: {
-                "api-key": apiKey(),
-                format: "json",
-                limit: "40"
-            },
-            timeout: 20000,
-            headers: {
-                Accept: "application/json",
-                "User-Agent": "DHARA/1.0"
-            },
-            validateStatus: () => true
-        });
-    } catch (error) {
+        const official = await fetchOfficial();
+        remember(official.records, official.updated);
+        return { records: cachedRecords, stale: false };
+    } catch (officialError) {
+        try {
+            const mandi = await fetchMandi();
+            if (mandi.records.length) {
+                remember(mandi.records, mandi.updated);
+                return { records: cachedRecords, stale: false };
+            }
+        } catch (error) {
+            console.error("MARKET FALLBACK:", error.code || error.message);
+        }
+
         if (cachedRecords) {
             return { records: cachedRecords, stale: true };
         }
-        const wrapped = new Error("Market price service failed");
-        wrapped.status = 502;
-        wrapped.code = error.code || error.cause?.code || "NETWORK";
-        throw wrapped;
-    }
 
-    const data = response.data && typeof response.data === "object" ? response.data : {};
-
-    if ((response.status === 429 || data.error) && cachedRecords) {
-        return { records: cachedRecords, stale: true };
-    }
-
-    if (response.status >= 400 || data.error) {
-        const error = new Error(
-            response.status === 429
+        const wrapped = new Error(
+            officialError.status === 429
                 ? "Market data is busy right now. Try again in a few minutes."
                 : "Market price service failed"
         );
-        error.status = response.status === 429 ? 429 : 502;
-        throw error;
+        wrapped.status = officialError.status === 429 ? 429 : 502;
+        wrapped.code = officialError.code || officialError.message;
+        throw wrapped;
     }
-
-    const records = Array.isArray(data.records) ? data.records : [];
-    if (records.length) {
-        cachedRecords = records;
-        cachedAt = Date.now();
-        sourceUpdated = data.updated_date || null;
-    }
-    return { records, stale: false };
 }
 
 router.get("/", async (req, res) => {

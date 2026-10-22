@@ -883,8 +883,8 @@ function calculateFertilizer(){
     const soilPH = sensorPH ?? 6.5;
     const pHSource = sensorPH === null ? "automatic working estimate" : "live sensor";
 
-    if (!sensorConnected) {
-        document.getElementById("fertilizerResult").textContent = "Connect the Arduino sensor to receive real-time fertilizer data.";
+    if (!sensorConnected && n + p + k <= 0) {
+        document.getElementById("fertilizerResult").textContent = "Enter nitrogen, phosphorus, and potassium, or plug the Arduino into this computer.";
         return;
     }
 

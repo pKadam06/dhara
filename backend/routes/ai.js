@@ -18,11 +18,11 @@ function getGeminiKey() {
 }
 
 const MODELS = [
+    "gemini-3.8-flash",
+    "gemini-3.5-flash",
+    "gemini-flash-latest",
     process.env.GEMINI_MODEL,
-    "gemini-2.5-flash",
-    "gemini-2.0-flash",
-    "gemini-3.5-flash-lite",
-    "gemini-3.5-flash"
+    "gemini-3.5-flash-lite"
 ].filter((model, index, models) => model && models.indexOf(model) === index);
 
 async function callGemini(model, apiKey, body) {
@@ -56,6 +56,9 @@ async function tryModels(apiKey, body) {
                         status: 503,
                         message: "Gemini rejected the API key. Replace GEMINI_API_KEY in backend/.env with a valid Google AI Studio key, then restart the backend."
                     };
+                }
+                if (result.status === 404 || /no longer available|not found|not supported/i.test(lastError)) {
+                    break;
                 }
                 if (result.status === 429 || result.status === 503 || /high demand|unavailable|overloaded|quota/i.test(lastError)) {
                     console.log(`Gemini ${model} busy:`, lastError);

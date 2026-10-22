@@ -120,7 +120,7 @@ async function scanForSensor() {
 
     const wanted = wantedPort();
     if (!wanted || wanted === "none" || wanted === "disabled") {
-        setHardware("disabled", null, "Sensor hardware is turned off. Set ARDUINO_PORT to auto when the Arduino is plugged in.");
+        setHardware("disconnected", null, "Plug the Arduino into this computer with a data USB cable for live soil readings.");
         if (process.env.SENSOR_DEMO === "true") startDemoReadings();
         return;
     }
